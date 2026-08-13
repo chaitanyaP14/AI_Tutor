@@ -1,0 +1,50 @@
+COURSE SYLLABUS & LECTURE NOTES
+
+MODULE 1: DATA STRUCTURES & ALGORITHMS (CS201)
+
+Chapter 1: Arrays and Linked Lists
+- Array Data Structure: Sequential collection of contiguous memory elements. Time complexity: O(1) random access, O(n) insertion/deletion.
+- Linked Lists: Dynamic data structure where elements (nodes) are stored non-contiguously. Each node contains Data and Next pointer.
+- Doubly Linked Lists: Nodes store Data, Next pointer, and Previous pointer. Enables bidirectional traversal.
+- Circular Linked Lists: Tail node's Next pointer points back to Head node.
+- Key Applications: LRU Cache implementation, Polynomial addition, Memory allocation.
+
+Chapter 2: Stacks and Queues
+- Stack (LIFO - Last In First Out): Operations - push(), pop(), peek(), isEmpty(). Implemented via Array or Linked List. Time complexity O(1) for push and pop.
+- Stack Applications: Expression evaluation (Infix to Postfix conversion), Recursion call stack handling, Undo operations in text editors, Depth-First Search (DFS).
+- Queue (FIFO - First In First Out): Operations - enqueue(), dequeue(), front(), rear().
+- Queue Variants: Circular Queue, Priority Queue (Min-Heap / Max-Heap), Double-Ended Queue (Deque).
+- Queue Applications: CPU Process scheduling, Printer spooling, Breadth-First Search (BFS).
+
+Chapter 3: Trees and Graphs
+- Binary Search Tree (BST): Binary tree where left subtree key < root key < right subtree key. Searching, Insertion, Deletion average time complexity O(log N), worst case O(N) for skewed tree.
+- Self-Balancing Trees: AVL Trees (Height difference balance factor <= 1, tree rotations: LL, RR, LR, RL), Red-Black Trees (Color properties, maximum height 2*log(N+1)).
+- Heap Data Structure: Complete binary tree satisfying Heap Property. Min-Heap (parent <= children) and Max-Heap (parent >= children). Heapify operation takes O(N), Insert/Extract-Min takes O(log N). Used in Heapsort and Priority Queues.
+- Graph Representations: Adjacency Matrix (space complexity O(V^2)), Adjacency List (space complexity O(V + E)).
+- Graph Traversals:
+  - Breadth-First Search (BFS): Uses Queue data structure. Computes shortest path in unweighted graphs. Time complexity O(V + E).
+  - Depth-First Search (DFS): Uses Stack or Recursion. Used for topological sorting, cycle detection, strongly connected components (Tarjan's/Kosaraju's algorithm).
+- Shortest Path Algorithms: Dijkstra's algorithm (Greedy, single-source, non-negative weights, time complexity O((V + E) log V) with Min-Heap), Bellman-Ford algorithm (Handles negative edge weights, time complexity O(V * E)).
+
+
+MODULE 2: MACHINE LEARNING FUNDAMENTALS (CS305)
+
+Chapter 4: Supervised Learning & Regression
+- Linear Regression: Models linear relationship between dependent variable Y and independent feature vector X. Loss function: Mean Squared Error (MSE) = (1/N) * sum((y_i - y_pred)^2).
+- Gradient Descent: Optimization algorithm to minimize cost function. Parameter update formula: theta = theta - alpha * grad(J(theta)), where alpha is learning rate. Variants: Batch Gradient Descent, Stochastic Gradient Descent (SGD), Mini-Batch GD.
+- Logistic Regression: Classification algorithm using Sigmoid activation function sigma(z) = 1 / (1 + e^-z) to map outputs between 0 and 1. Uses Binary Cross-Entropy (Log Loss).
+- Regularization Techniques:
+  - L1 Regularization (Lasso): Adds penalty sum(|w_i|) to loss function. Drives weights to zero, performing feature selection.
+  - L2 Regularization (Ridge): Adds penalty sum(w_i^2) to loss function. Shrinks weights to prevent overfitting.
+  - ElasticNet: Combines L1 and L2 penalties.
+
+Chapter 5: Classification Algorithms & Evaluation Metrics
+- Decision Trees: Non-parametric supervised model. Splits dataset using Information Gain (Entropy reduction) or Gini Impurity. Gini = 1 - sum(p_i^2). Overfitting mitigated by pruning, setting max_depth, or min_samples_split.
+- Random Forest: Ensemble learning algorithm combining multiple Decision Trees built via Bagging (Bootstrap Aggregation) and feature subspace sampling. Reduces variance without increasing bias.
+- Support Vector Machines (SVM): Finds hyper-plane that maximizes margin between classes. Margin = 2 / ||w||. Soft-margin SVM introduces slack variables C. Kernel Trick (RBF, Polynomial kernel) projects non-linear data into higher-dimensional space.
+- Model Evaluation Metrics:
+  - Confusion Matrix: True Positives (TP), False Positives (FP), True Negatives (TN), False Negatives (FN).
+  - Precision = TP / (TP + FP). Measures exactness.
+  - Recall (Sensitivity) = TP / (TP + FN). Measures completeness.
+  - F1-Score = 2 * (Precision * Recall) / (Precision * Recall). Harmonic mean of Precision and Recall.
+  - ROC-AUC Curve: Plot of True Positive Rate vs False Positive Rate across decision thresholds.
