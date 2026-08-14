@@ -6,7 +6,20 @@ from typing import List, Dict, Any, Tuple
 
 _KEY_PART1 = "AQ.Ab8RN6JVCXq8O1e-"
 _KEY_PART2 = "O3MoAx5_VzsfpjT_AF_M0Wla8BY79Eoofg"
-DEFAULT_API_KEY = os.getenv("GEMINI_API_KEY", "") or (_KEY_PART1 + _KEY_PART2)
+
+def get_default_api_key() -> str:
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets") and "GEMINI_API_KEY" in st.secrets:
+            return st.secrets["GEMINI_API_KEY"]
+    except Exception:
+        pass
+    env_key = os.getenv("GEMINI_API_KEY", "")
+    if env_key:
+        return env_key
+    return _KEY_PART1 + _KEY_PART2
+
+DEFAULT_API_KEY = get_default_api_key()
 
 # Active models supported by Gemini API
 CANDIDATE_MODELS = [
@@ -20,8 +33,8 @@ CANDIDATE_MODELS = [
 class LLMBackend:
     """Backend interface connecting to Google Gemini API for RAG-grounded generations."""
 
-    def __init__(self, api_key: str = DEFAULT_API_KEY, model_name: str = "gemini-flash-latest"):
-        self.api_key = api_key or DEFAULT_API_KEY
+    def __init__(self, api_key: str = "", model_name: str = "gemini-flash-latest"):
+        self.api_key = api_key or get_default_api_key()
         self.model_name = model_name
 
     def set_api_key(self, api_key: str):
